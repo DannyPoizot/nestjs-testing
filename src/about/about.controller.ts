@@ -14,8 +14,14 @@ export class AboutController {
 
   @Get()
   @Render('about')
-  findAll() {
-    return {about: this.aboutService.findAll()};
+  async findAll() {
+    return {about: await this.aboutService.findAll()};
+    //  return {about: [
+    //    "Bonjour",
+    //    "Page",
+    //    "About",
+    //  ]};
+    // return this.aboutService.findAll();
   }
 
   @Get(':id')

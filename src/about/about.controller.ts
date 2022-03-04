@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Render } from '@nestjs/common';
 import { AboutService } from './about.service';
 import { CreateAboutDto } from './dto/create-about.dto';
 import { UpdateAboutDto } from './dto/update-about.dto';
@@ -13,8 +13,9 @@ export class AboutController {
   }
 
   @Get()
+  @Render('about')
   findAll() {
-    return this.aboutService.findAll();
+    return {about: this.aboutService.findAll()};
   }
 
   @Get(':id')
@@ -31,4 +32,5 @@ export class AboutController {
   remove(@Param('id') id: string) {
     return this.aboutService.remove(+id);
   }
+  
 }

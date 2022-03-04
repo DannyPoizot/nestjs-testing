@@ -63,7 +63,8 @@ export class AboutService {
   }
 
   async findAll(): Promise<about[]> {
-    return this.prisma.about.findMany();
+   const x = await this.prisma.about.findMany();
+    return x;
   }
 
   findOne(id: number) {
